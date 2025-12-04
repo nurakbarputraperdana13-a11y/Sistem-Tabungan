@@ -3,13 +3,13 @@
 
 using namespace std;
 
-// fungsi pin :
+// fungsi pin:
 
-// fungsi masukin tabungan sama tglnya :
+// fungsi masukin tabungan sama tglnya:
 
-// riwayat masukin  tabungan :
+// riwayat masukin  tabungan:
 
-// fungsi riwayat total saldo :
+// fungsi riwayat total saldo:
 
 
 
@@ -18,4 +18,5 @@ int main()
 {
  // fungsi utama 
     return 0;
+
 }
