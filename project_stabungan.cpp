@@ -11,6 +11,8 @@ using namespace std;
 
 // fungsi riwayat total saldo:
 
+// tampilan interface:
+
 
 
 
@@ -20,3 +22,4 @@ int main()
     return 0;
 
 }
+
