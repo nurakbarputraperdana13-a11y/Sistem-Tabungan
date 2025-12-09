@@ -90,6 +90,44 @@ void tampilan_riwayat(){
     }
 }
 
+void penarikan(){
+    cout << "==============================" << endl;
+    cout << "      PENARIKAN TABUNGAN     " << endl;
+    cout << "==============================" << endl;
+    
+    long long saldo = saldo_awal();
+    cout << "Saldo saat ini: Rp " << saldo << endl << endl;
+    
+    cout << "masukan jumlah penarikan: Rp ";
+    long long jumlah_tarik;
+    cin >> jumlah_tarik;
+    
+    if (jumlah_tarik <= 0) {
+        cout << "Jumlah penarikan harus lebih dari 0!" << endl << endl;
+        return;
+    }
+    
+    if (jumlah_tarik > saldo) {
+        cout << "Saldo tidak cukup! Saldo Anda: Rp " << saldo << endl << endl;
+        return;
+    }
+    
+    saldo -= jumlah_tarik;
+    update_saldo(saldo);
+    
+    cout << "masukan tanggal (hari/bulan/tahun): ";
+    string tanggal;
+    cin >> tanggal;
+    
+    cout << "Penarikan berhasil! Saldo tersisa: Rp " << saldo << endl << endl;
+    
+    if (jumlah_data < jumlah_hari) {
+        data_tanggal[jumlah_data] = tanggal;
+        data_saldo[jumlah_data] = -jumlah_tarik;  // Negatif untuk membedakan penarikan
+        jumlah_data++;
+    }
+}
+
 
 int main(){
     int pilihan;
@@ -113,11 +151,12 @@ int main(){
     }
 
     do{
-        cout << "1, masukin tabungan" << endl;
+        cout << "1. masukin tabungan" << endl;
         cout << "2. cek saldo" << endl;
-        cout << "3. buat ulang pin" << endl;
-        cout << "4. cek riwayat" << endl;
-        cout << "5. keluar" << endl;
+        cout << "3. penarikan tabungan" << endl;
+        cout << "4. buat ulang pin" << endl;
+        cout << "5. cek riwayat" << endl;
+        cout << "6. keluar" << endl;
         cout << "pilih menu: ";
 
         cin >> pilihan;
@@ -161,20 +200,25 @@ int main(){
                 cout << "==============================" << endl;
                 cout << "        CEK SALDO           " << endl; 
                 cout << "==============================" << endl;
-                cout << "Saldo saat Ini: "<<saldo_sekarang << endl<< endl;
+                cout << "Saldo saat Ini: Rp "<<saldo_sekarang << endl<< endl;
             }
                 break;
         
             case 3:{
+                penarikan();
+            }
+                break;
+
+            case 4:{
                 buat_ulang_pin();
             }
                 break;
             
-            case 4:{
+            case 5:{
                 tampilan_riwayat();
             }
                 break;
-            case 5:{
+            case 6:{
                 cout << "keluar program" << endl;
                 return 0;
             }
@@ -190,7 +234,7 @@ int main(){
         }
             
 
-    } while (pilihan != 5);
+    } while (pilihan != 6);
     
     return 0;
 }
